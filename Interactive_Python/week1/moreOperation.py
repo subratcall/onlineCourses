@@ -1,0 +1,29 @@
+num = 49
+tens = 49 // 10
+ones = num % 10
+print "tens = ",tens
+print "ones = ", ones
+
+hourInputStr = raw_input("input hour")
+hourShiftStr = raw_input("input shift")
+
+hourInputInt = 0
+hourShiftInt = 0
+
+try:
+	hourInputInt = int(hourInputStr)
+except:
+	hourInputInt = 0
+
+try:
+	hourShiftInt = int(hourShiftStr)
+except:
+	hourShiftInt = 0
+
+resultHour = (hourInputInt + hourShiftInt) % 24
+
+print "real hour is", resultHour
+tens = resultHour //10
+ones = resultHour & 10
+
+print str(tens) + str(ones) + ":00"
