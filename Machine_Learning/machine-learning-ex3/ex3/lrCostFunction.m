@@ -36,19 +36,38 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
-z = theta*X;
-size(z)
+%computing cost 
+
+%theta
+%X
+z = X*theta;
+%z
 h_theta = sigmoid(z);
+%h_theta
+error = -(y.*log(h_theta)) - (1-y).*log(1 - h_theta);
+%error
+J = sum(error) / m;
 
+% computing gradien
+beta = h_theta - y;
+grad = transpose(X)*beta;
+grad = grad / m;
 
+%regularize cost
+temp_theta = theta.*theta;
+temp_theta(1) = 0;
+costRegulator = lambda * (1/(2*m))*(sum(temp_theta));
+J = J + costRegulator;
 
+%regularize gradien
+temp = theta;
+temp(1) = 0;
 
-
+grad = grad + (lambda/m)*temp;
 
 
 
 % =============================================================
 
-grad = grad(:);
 
 end

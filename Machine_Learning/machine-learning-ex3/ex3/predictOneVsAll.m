@@ -30,12 +30,15 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+z = X * transpose(all_theta);
+%z
+h_theta = sigmoid(z);
+%size(h_theta)
 
 
+[maxValues indices] = max(transpose(h_theta));
 
-
-
-
+p = transpose(indices);
 % =========================================================================
 
 
