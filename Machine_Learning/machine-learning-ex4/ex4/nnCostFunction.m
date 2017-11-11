@@ -78,20 +78,33 @@ endfor
 insideBracket = -extY.*log(hTheta) - (1-extY).*log(1-hTheta);
 J = sum(sum(insideBracket))/m;
 
-size(Theta1)
-
 theta1Sqr = Theta1(:,2:end).*Theta1(:,2:end);
 theta2Sqr = Theta2(:,2:end).*Theta2(:,2:end);
 
 J += lambda*(sum(sum(theta1Sqr))+sum(sum(theta2Sqr)))/(2*m);
 
 
-
-
-
-
-
 % -------------------------------------------------------------
+
+delta3 = transpose(hTheta - extY);
+
+delta2 = (transpose(Theta2)*delta3) .* transpose(a2 .* (1-a2));
+delta2 = delta2(2:end,:);
+
+bigD2 = delta3*a2;
+bigD1 = delta2*a1;
+
+Theta2_grad = bigD2/m;
+Theta1_grad = bigD1/m;
+
+regTheta1 = lambda * Theta1 / m;
+regTheta2 = lambda * Theta2 / m;
+
+regTheta1(:,1) = zeros(size(regTheta1(1),1));
+regTheta2(:,1) = zeros(size(regTheta2(1),1));
+
+Theta1_grad += regTheta1;
+Theta2_grad += regTheta2;
 
 % =========================================================================
 
