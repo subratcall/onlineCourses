@@ -3,29 +3,13 @@ from trd_utils import *
 
 def test_run():
     #defining data range
-    start_date = '2018-06-25'
-    end_date = '2018-06-30'
+    start_date = '2018-07-01'
+    end_date = '2019-03-01'
     dates = pd.date_range(start_date,end_date)
+   
+    symbols = ['AAPL','IBM','SPY']
 
-    #creating an empty dataframe
-    df1 = pd.DataFrame(index=dates)
-    
-    #reading spy
-    # dfIBM = pd.read_csv("data/IBM.csv", 
-    #     index_col="Date", 
-    #     parse_dates=True,
-    #     usecols=['Date','Adj Close'],
-    #     na_values=['nan'])
-    #print(dfIBM)
-    # joining the tow dataframes
-    #df1= df1.join(dfIBM, how = 'inner')
-    #df1 = df1.dropna()
-
-    symbols = ['AAPL','IBM','SP5']
-    for symbol in symbols:
-        df_temp = pd.read_csv("data/{}.csv".format(symbol), index_col="Date", parse_dates=True, usecols=['Date', 'Adj Close'], na_values=['nan'])
-        df_temp = df_temp.rename(columns={'Adj Close': symbol})
-        df1=df1.join(df_temp)
-
-    print(df1)
+    df = normalize_data(get_data(symbols, dates))
+    #print(df['2018-06-26':'2018-06-27',['AAPL','IBM']])
+    plot_selected(df, ['SPY','IBM'],'2018-08-01','2019-02-01')
 test_run()
