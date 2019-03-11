@@ -39,7 +39,6 @@ def plot_data(df, title="Stock Prices",xlabel="Date", ylabel="Price"):
     ax.set_ylabel(ylabel)
     plt.show()
 
-
 def plot_selected(df, columns, start_index, end_index):
     """Plot the desired columns over index values in the given range."""
     plot_data(df.ix[start_index:end_index,columns])
@@ -62,3 +61,6 @@ def compute_daily_return(df):
     daily_returns = (df/df.shift(1))-1
     daily_returns.ix[0, :] = 0
     return daily_returns
+
+def fill_missing_values(df_data):
+    df_data = df_data.fillna(method="ffil")
