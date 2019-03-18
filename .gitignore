@@ -26,3 +26,13 @@
 *.exe
 *.out
 *.app
+
+# images
+*.jpg
+*.png
+
+#settings 
+*.json
+
+#compressed filse
+*.zip
