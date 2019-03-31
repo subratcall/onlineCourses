@@ -14,6 +14,7 @@ def test_run():
     print("minima found at:")
     print ("X = {}, Y = {}".format(min_result.x, min_result.fun))
 
+    Xplot = np
 if __name__ == "__main__":
     test_run()
     

@@ -49,7 +49,7 @@ def scatter_plot():
     symbols = ["AAPL","SPY"]
 
     df = get_data(symbols, dates)
-
+possible to write a driver as part of your application, in practice most developers us
     daily_returns = compute_daily_return(df)
 
     daily_returns.plot(kind = "scatter", x="SPY",y="AAPL")
