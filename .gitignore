@@ -36,3 +36,11 @@
 
 #compressed filse
 *.zip
+
+*.jpeg
+*.pyc
+*.h5
+*.csv
+*.mp3
+*.wav
+*.npy
