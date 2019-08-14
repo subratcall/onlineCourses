@@ -1,0 +1,8 @@
+Pillow
+tensorflow-gpu
+keras
+matplotlib
+jupyter 
+pylint
+scipy 
+
