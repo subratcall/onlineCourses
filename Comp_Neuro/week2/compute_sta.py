@@ -41,7 +41,7 @@ def compute_sta(stim, rho, num_timesteps):
     # Your code goes here.
     for i in range(0,num_spikes):
         temp_stim = stim[spike_times[i] - num_timesteps:spike_times[i]]
-        temp_rho = rho[spike_times[i] - num_timesteps:spike_times[i]]
-        sta[i] = np.dot(temp_stim,np.transpose(temp_rho)) / num_spikes
+        sta = sta + temp_stim
     
+    sta = sta / num_spikes
     return sta
