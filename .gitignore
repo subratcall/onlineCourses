@@ -57,5 +57,11 @@ db.sqlite3
 /static
 .DS_Store
 
+#another statics
+*.Rhistory
+
 #folders
 refs
+
+#txt
+*.txt
