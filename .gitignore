@@ -65,3 +65,6 @@ refs
 
 #txt
 *.txt
+
+#videos
+*.mp4
