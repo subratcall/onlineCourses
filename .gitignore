@@ -68,3 +68,7 @@ refs
 
 #videos
 *.mp4
+
+#excel
+*.xls
+*.xlxs
