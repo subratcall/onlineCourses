@@ -15,6 +15,7 @@ import os
 import pickle
 import matplotlib.pyplot as plt
 
+from numpy.random import RandomState
 
 class WGAN():
     def __init__(self
@@ -81,6 +82,8 @@ class WGAN():
         self._build_generator()
 
         self._build_adversarial()
+        
+        self.sample_image_rs = RandomState()
 
     def wasserstein(self, y_true, y_pred):
         return - K.mean(y_true * y_pred)
@@ -310,7 +313,8 @@ class WGAN():
 
     def sample_images(self, run_folder):
         r, c = 5, 5
-        noise = np.random.normal(0, 1, (r * c, self.z_dim))
+        self.sample_image_rs.seed(9000)
+        noise = self.sample_image_rs.normal(0, 1, (r * c, self.z_dim))
         gen_imgs = self.generator.predict(noise)
 
         #Rescale images 0 - 1

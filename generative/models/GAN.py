@@ -14,6 +14,7 @@ import os
 import pickle as pkl
 import matplotlib.pyplot as plt
 
+from numpy.random import RandomState
 
 class GAN():
     def __init__(self
@@ -76,6 +77,8 @@ class GAN():
         self._build_generator()
 
         self._build_adversarial()
+        
+        self.sample_image_rs = RandomState()
 
     def get_activation(self, activation):
         if activation == 'leaky_relu':
@@ -272,7 +275,8 @@ class GAN():
     
     def sample_images(self, run_folder):
         r, c = 5, 5
-        noise = np.random.normal(0, 1, (r * c, self.z_dim))
+        self.sample_image_rs.seed(9001)
+        noise = self.sample_image_rs.normal(0, 1, (r * c, self.z_dim))
         gen_imgs = self.generator.predict(noise)
 
         gen_imgs = 0.5 * (gen_imgs + 1)

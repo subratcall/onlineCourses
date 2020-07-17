@@ -216,7 +216,16 @@ def load_safari(folder):
         
     return xtotal, ytotal
 
+def load_gdoodle_npy(npy_name, wasserstein=False):
+    mypath = os.path.join("./data", npy_name)
+    data = np.load(mypath)
+    data_len = data.shape[0]
 
+    reshaped_data = data.reshape(data_len,28,28,1)
+    
+    if wasserstein:
+        reshaped_data = (reshaped_data.astype('float32') - 127.5)/127.5
+    return reshaped_data
 
 def load_cifar(label, num):
     if num == 10:
@@ -313,3 +322,5 @@ def preprocess_image(data_name, file, img_nrows, img_ncols):
     img = vgg19.preprocess_input(img)
     return img
 
+if __name__ == "__main__":
+    pass
