@@ -8,5 +8,12 @@ data = [go.Scatter(
     x=df['horsepower'], 
     y=df['mpg'], 
     text=df['name'], 
-    mode='marker',
-    marker=dict(size=2*df['cylinders']))]
+    mode='markers',
+    marker=dict(
+        size=0.01*df['weight'], 
+        color=df['cylinders'],
+        showscale=True))]
+
+layout = go.Layout(title='Bubble Chart', hovermode='x')
+fig = go.Figure(data=data, layout=layout)
+pyo.plot(fig)
